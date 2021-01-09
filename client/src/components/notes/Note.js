@@ -9,14 +9,12 @@ function Note({ title, content, color, username, id }) {
   const { idToken } = useAuth();
 
   function deleteNote(id) {
+    deleteNoteInClient(id);
+
     axios
       .delete(`http://10.0.0.135:5000/notes/${id}`)
       .then((res) => {
         console.log(res.data);
-        axios.get(`http://10.0.0.135:5000/notes/${idToken}`).then((res) => {
-          console.log(res.data);
-          setNotes(res.data);
-        });
       })
       .catch((err) => {
         console.error(err);
@@ -77,6 +75,12 @@ function Note({ title, content, color, username, id }) {
     const newNote = newNotes.find((note) => note.id === id);
     newNote[propertyName] = e.target.value;
     setNotes(newNotes);
+  }
+
+  function deleteNoteInClient(id) {
+    const newNotes = notes.slice();
+    const filteredNotes = newNotes.filter((note) => note.id !== id);
+    setNotes(filteredNotes);
   }
 
   return (
