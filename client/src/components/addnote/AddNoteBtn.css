@@ -1,0 +1,17 @@
+.add-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 2rem;
+  outline: none;
+  border: none;
+  transition: all 200ms;
+}
+.add-btn:hover,
+.add-btn:focus {
+  background-color: cornflowerblue;
+}

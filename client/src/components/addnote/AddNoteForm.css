@@ -1,0 +1,45 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 95%;
+}
+
+.form__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: auto;
+}
+
+.form__header input {
+  font-size: 2rem;
+  width: 70%;
+}
+
+.form__header button {
+  background-color: transparent;
+  border: none;
+}
+
+.form textarea {
+  flex-grow: 0.8;
+}
+
+.form select {
+  margin-top: auto;
+}
+
+.form button {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.form > button {
+  margin-top: auto;
+}
+
+.close {
+  cursor: pointer;
+}
