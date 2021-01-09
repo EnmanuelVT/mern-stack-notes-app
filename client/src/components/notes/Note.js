@@ -71,7 +71,9 @@ function Note({ title, content, color, username, id }) {
       .patch(`http://localhost:5000/notes/${id}`, {
         color: e.target.value,
       })
-      .then((res) => {})
+      .then((res) => {
+        console.log(res);
+      })
       .catch((err) => {
         console.error(err);
       });

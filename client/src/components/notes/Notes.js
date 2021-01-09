@@ -10,13 +10,17 @@ function Notes() {
   const [notes, setNotes] = useContext(NotesContext);
   const { currentUser } = useAuth();
 
-  useEffect(async () => {
-    const idToken = await currentUser.getIdToken();
+  useEffect(() => {
+    async function getNotes() {
+      const idToken = await currentUser.getIdToken();
 
-    axios.get(`http://10.0.0.135:5000/notes/${idToken}`).then((res) => {
-      setNotes(res.data);
-    });
-  }, []);
+      axios.get(`http://10.0.0.135:5000/notes/${idToken}`).then((res) => {
+        setNotes(res.data);
+      });
+    }
+
+    getNotes();
+  }, [currentUser, setNotes]);
 
   return (
     <>
