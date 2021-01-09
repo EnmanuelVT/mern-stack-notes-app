@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { NotesContext } from "../notes/NotesProvider";
 import "./AddNoteForm.css";
 import axios from "axios";
@@ -11,7 +11,7 @@ function AddNoteForm({ onClose }) {
   const contentRef = useRef("");
   const colorRef = useRef("");
 
-  const [notes, setNotes] = useContext(NotesContext);
+  const [setNotes] = useContext(NotesContext);
   const { currentUser } = useAuth();
 
   function addNote(e) {

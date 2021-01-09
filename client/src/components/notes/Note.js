@@ -2,11 +2,9 @@ import React, { useContext } from "react";
 import { NotesContext } from "./NotesProvider";
 import "./Note.css";
 import axios from "axios";
-import { useAuth } from "../../contexts/AuthContext";
 
 function Note({ title, content, color, username, id }) {
   const [notes, setNotes] = useContext(NotesContext);
-  const { idToken } = useAuth();
 
   function deleteNote(id) {
     deleteNoteInClient(id);

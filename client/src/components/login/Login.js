@@ -1,12 +1,11 @@
 import React, { useState, useRef } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
-import axios from "axios";
 
 function Login() {
   const emailRef = useRef("");
   const passwordRef = useRef("");
-  const { login, currentUser } = useAuth();
+  const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
