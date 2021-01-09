@@ -6,6 +6,7 @@ const AuthContext = React.createContext();
 
 export default function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
+  const [idToken, setIdToken] = useState();
   const [loading, setLoading] = useState(true);
 
   function signUp(email, password) {
@@ -46,8 +47,14 @@ export default function AuthProvider({ children }) {
   }
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       setCurrentUser(user);
+
+      if (user) {
+        const idToken = await user.getIdToken();
+        setIdToken(idToken);
+      }
+
       setLoading(false);
     });
 
@@ -62,6 +69,7 @@ export default function AuthProvider({ children }) {
     resetPassword,
     updateEmail,
     updatePassword,
+    idToken,
   };
 
   return (

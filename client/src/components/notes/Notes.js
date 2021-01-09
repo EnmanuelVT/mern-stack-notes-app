@@ -8,19 +8,17 @@ import { useAuth } from "../../contexts/AuthContext";
 
 function Notes() {
   const [notes, setNotes] = useContext(NotesContext);
-  const { currentUser } = useAuth();
+  const { currentUser, idToken } = useAuth();
 
   useEffect(() => {
     async function getNotes() {
-      const idToken = await currentUser.getIdToken();
-
       axios.get(`http://10.0.0.135:5000/notes/${idToken}`).then((res) => {
         setNotes(res.data);
       });
     }
 
     getNotes();
-  }, [currentUser, setNotes]);
+  }, [currentUser, setNotes, idToken]);
 
   return (
     <>

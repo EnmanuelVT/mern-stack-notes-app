@@ -6,23 +6,16 @@ import { useAuth } from "../../contexts/AuthContext";
 
 function Note({ title, content, color, username, id }) {
   const [notes, setNotes] = useContext(NotesContext);
-  const { currentUser } = useAuth();
+  const { idToken } = useAuth();
 
   function deleteNote(id) {
     axios
       .delete(`http://10.0.0.135:5000/notes/${id}`)
       .then((res) => {
         console.log(res.data);
-        currentUser.getIdToken().then((idToken) => {
-          axios
-            .get(`http://10.0.0.135:5000/notes/${idToken}`)
-            .then((res) => {
-              console.log(res.data);
-              setNotes(res.data);
-            })
-            .catch((err) => {
-              console.error(err);
-            });
+        axios.get(`http://10.0.0.135:5000/notes/${idToken}`).then((res) => {
+          console.log(res.data);
+          setNotes(res.data);
         });
       })
       .catch((err) => {
