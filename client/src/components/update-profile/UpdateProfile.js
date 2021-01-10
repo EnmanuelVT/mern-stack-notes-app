@@ -43,7 +43,7 @@ function UpdateProfile() {
   return (
     <>
       <h4>{error && error}</h4>
-      <h2>Update Profile</h2>
+      <h2>Update Account</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="email"

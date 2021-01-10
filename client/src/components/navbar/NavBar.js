@@ -27,7 +27,7 @@ function NavBar() {
   const toLogin = () => history.push("/login");
   const toSignUp = () => history.push("/sign-up");
   const toNotes = () => history.push("/notes");
-  const toDashboard = () => history.push("/");
+  const toAccount = () => history.push("/account");
 
   return (
     <div className={classes.root}>
@@ -42,8 +42,8 @@ function NavBar() {
           <Button onClick={toSignUp} color="inherit">
             Sign Up
           </Button>
-          <Button onClick={toDashboard} color="inherit">
-            Dashboard
+          <Button onClick={toAccount} color="inherit">
+            Account
           </Button>
         </Toolbar>
       </AppBar>
