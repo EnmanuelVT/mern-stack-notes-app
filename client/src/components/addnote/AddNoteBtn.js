@@ -1,15 +1,15 @@
 import { CssBaseline, Fab } from "@material-ui/core";
 import React, { useState } from "react";
-import Modal from "../modal/Modal";
 import AddNoteForm from "./AddNoteForm";
 import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
     position: "relative",
-    minHeight: "90vh",
+    minHeight: "80vh",
   },
   fab: {
     position: "absolute",
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AddNoteBtn() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const classes = useStyles();
 
@@ -31,7 +31,7 @@ function AddNoteBtn() {
   };
 
   function handleAddNote() {
-    setIsOpen(true);
+    setOpen(true);
   }
 
   return (
@@ -45,8 +45,8 @@ function AddNoteBtn() {
         >
           {fab.icon}
         </Fab>
-        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-          <AddNoteForm onClose={() => setIsOpen(false)} />
+        <Modal open={open} onClose={() => setOpen(false)}>
+          <AddNoteForm onClose={() => setOpen(false)} />
         </Modal>
       </div>
     </>
