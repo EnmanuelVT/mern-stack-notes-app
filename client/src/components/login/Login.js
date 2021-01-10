@@ -115,7 +115,7 @@ function Login() {
             className={classes.submit}
             disabled={loading}
           >
-            Sign In
+            Log In
           </Button>
           <Grid container>
             <Grid item xs>
