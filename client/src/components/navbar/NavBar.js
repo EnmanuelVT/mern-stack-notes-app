@@ -1,24 +1,53 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+    cursor: "pointer",
+  },
+}));
 
 function NavBar() {
+  const classes = useStyles();
+
+  const history = useHistory();
+
+  const toLogin = () => history.push("/login");
+  const toSignUp = () => history.push("/sign-up");
+  const toNotes = () => history.push("/notes");
+  const toDashboard = () => history.push("/");
+
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/notes">Notes</Link>
-        </li>
-        <li>
-          <Link to="/">Dashboard</Link>
-        </li>
-        <li>
-          <Link to="/login">Log In</Link>
-        </li>
-        <li>
-          <Link to="/sign-up">Sign Up</Link>
-        </li>
-      </ul>
-    </nav>
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography onClick={toNotes} variant="h6" className={classes.title}>
+            Notes App
+          </Typography>
+          <Button onClick={toLogin} color="inherit">
+            Login
+          </Button>
+          <Button onClick={toSignUp} color="inherit">
+            Sign Up
+          </Button>
+          <Button onClick={toDashboard} color="inherit">
+            Dashboard
+          </Button>
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 }
 
