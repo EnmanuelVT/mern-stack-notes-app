@@ -20,7 +20,7 @@ function App() {
           <Redirect exact from="/" to="/notes" />
           <PrivateRoute path="/notes" component={Notes} />
           <PrivateRoute exact path="/account" component={Account} />
-          <PrivateRoute path="/update-profile" component={UpdateProfile} />
+          <PrivateRoute path="/update-account" component={UpdateProfile} />
           <Route path="/sign-up" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
