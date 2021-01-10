@@ -1,3 +1,4 @@
+import { Button } from "@material-ui/core";
 import React, { useState } from "react";
 import Modal from "../modal/Modal";
 import AddNoteForm from "./AddNoteForm";
@@ -11,9 +12,9 @@ function AddNoteBtn() {
 
   return (
     <div>
-      <button onClick={handleAddNote} className="add-btn">
+      <Button onClick={handleAddNote} className="add-btn">
         +
-      </button>
+      </Button>
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <AddNoteForm onClose={() => setIsOpen(false)} />
       </Modal>
