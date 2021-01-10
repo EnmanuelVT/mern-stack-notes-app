@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { NotesContext } from "./NotesProvider";
-import "./Note.css";
 import axios from "axios";
 
 function Note({ title, content, color, username, id }) {

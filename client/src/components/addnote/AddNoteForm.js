@@ -1,9 +1,7 @@
 import React, { useContext, useRef } from "react";
 import { NotesContext } from "../notes/NotesProvider";
-import "./AddNoteForm.css";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import { ImCancelCircle } from "react-icons/im";
 import { useAuth } from "../../contexts/AuthContext";
 
 function AddNoteForm({ onClose }) {
@@ -41,7 +39,7 @@ function AddNoteForm({ onClose }) {
       <div className="form__header">
         <input type="text" placeholder="Title" ref={titleRef} />
         <button onClick={onClose} className="close">
-          <ImCancelCircle style={{ fontSize: "2rem" }} />
+          X
         </button>
       </div>
       <textarea placeholder="Content" ref={contentRef} />

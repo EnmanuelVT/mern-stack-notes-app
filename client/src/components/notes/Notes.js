@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import Note from "./Note";
 import { NotesContext } from "./NotesProvider";
-import "./Notes.css";
 import axios from "axios";
 import AddNoteBtn from "../addnote/AddNoteBtn";
 import { useAuth } from "../../contexts/AuthContext";

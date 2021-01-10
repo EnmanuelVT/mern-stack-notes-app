@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-import "./Modal.css";
-
 export default function Modal({ isOpen, children, onClose }) {
   if (!isOpen) {
     document.querySelector("#root").classList.remove("blur");

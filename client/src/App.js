@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css";
 import Notes from "./components/notes/Notes";
 import NotesProvider from "./components/notes/NotesProvider";
 import { BrowserRouter as Router, Route } from "react-router-dom";
