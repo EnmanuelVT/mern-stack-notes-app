@@ -11,7 +11,7 @@ function AddNoteForm({ onClose }) {
   const contentRef = useRef("");
   const colorRef = useRef("");
 
-  const [setNotes] = useContext(NotesContext);
+  const [, setNotes] = useContext(NotesContext);
   const { currentUser } = useAuth();
 
   function addNote(e) {
