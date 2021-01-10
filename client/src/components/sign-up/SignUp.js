@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { FormHelperText } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -51,6 +52,7 @@ function SignUp() {
   const { signUp } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   const classes = useStyles();
 
@@ -65,6 +67,7 @@ function SignUp() {
       setError("");
       setLoading(true);
       await signUp(emailRef.current.value, passwordRef.current.value);
+      history.push("/notes");
     } catch (err) {
       console.error(err);
       setError("Failed to create an account");
