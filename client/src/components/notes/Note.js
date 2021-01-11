@@ -1,9 +1,45 @@
 import React, { useContext } from "react";
 import { NotesContext } from "./NotesProvider";
 import axios from "axios";
+import colors from "./colors";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  makeStyles,
+  MenuItem,
+  TextField,
+} from "@material-ui/core";
+import { blue, orange, green, yellow, pink } from "@material-ui/core/colors";
 
-function Note({ title, content, color, username, id }) {
+const useStyles = makeStyles({
+  root: {},
+  cardContent: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  blue: {
+    backgroundColor: blue.A100,
+  },
+  orange: {
+    backgroundColor: orange.A100,
+  },
+  green: {
+    backgroundColor: green.A100,
+  },
+  yellow: {
+    backgroundColor: yellow.A100,
+  },
+  pink: {
+    backgroundColor: pink.A100,
+  },
+});
+
+function Note({ title, content, color, id }) {
   const [notes, setNotes] = useContext(NotesContext);
+
+  const classes = useStyles();
 
   function deleteNote(id) {
     deleteNoteInClient(id);
@@ -81,19 +117,49 @@ function Note({ title, content, color, username, id }) {
   }
 
   return (
-    <div className={`note ${color ? color.toLowerCase() : ""} `}>
-      <input type="text" value={title} onChange={handleTitleChange} />
-      <textarea value={content} onChange={handleContentChange}></textarea>
-      <strong>{username}</strong>
-      <select defaultValue={color} onChange={handleColorChange}>
-        <option>Blue</option>
-        <option>Orange</option>
-        <option>Green</option>
-        <option>Yellow</option>
-        <option>Pink</option>
-      </select>
-      <button onClick={handleDeleteNote}>Delete</button>
-    </div>
+    <Card className={`${classes.root} ${classes[color.toLowerCase()]}`}>
+      <CardContent className={classes.cardContent}>
+        <TextField
+          margin="normal"
+          type="text"
+          value={title}
+          onChange={handleTitleChange}
+          variant="outlined"
+        />
+        <TextField
+          margin="normal"
+          multiline={true}
+          rows={10}
+          value={content}
+          onChange={handleContentChange}
+          variant="outlined"
+        />
+        <TextField
+          margin="normal"
+          select
+          fullWidth
+          label="Color"
+          value={color}
+          onChange={handleColorChange}
+          variant="outlined"
+        >
+          {colors.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </TextField>
+      </CardContent>
+      <CardActions>
+        <Button
+          style={{ margin: "0 10px", marginBottom: "1rem" }}
+          variant="contained"
+          onClick={handleDeleteNote}
+        >
+          Delete
+        </Button>
+      </CardActions>
+    </Card>
   );
 }
 

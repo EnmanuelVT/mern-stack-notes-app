@@ -3,6 +3,7 @@ import { NotesContext } from "../notes/NotesProvider";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { useAuth } from "../../contexts/AuthContext";
+import colors from "../notes/colors";
 
 import { Button, Container } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -26,8 +27,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const colors = ["Blue", "Orange", "Green", "Yellow", "Pink"];
-
 function AddNoteForm({ onClose }) {
   const titleRef = useRef("");
   const contentRef = useRef("");
@@ -40,7 +39,7 @@ function AddNoteForm({ onClose }) {
 
   const handleColorChange = (e) => setColor(e.target.value);
 
-  function addNote(e) {
+  function addNote() {
     const note = {
       email: currentUser.email,
       title: titleRef.current.value,
