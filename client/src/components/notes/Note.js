@@ -35,6 +35,9 @@ const useStyles = makeStyles({
   pink: {
     backgroundColor: pink.A100,
   },
+  titleInput: {
+    fontSize: "2rem",
+  },
 });
 
 function Note({ title, content, color, id }) {
@@ -60,7 +63,7 @@ function Note({ title, content, color, id }) {
   }
 
   function handleTitleChange(e) {
-    changeNoteProperty("title", e);
+    changeNoteProperty("title", e.target.value);
 
     axios
       .patch(`http://10.0.0.135:5000/notes/${id}`, {
@@ -75,7 +78,7 @@ function Note({ title, content, color, id }) {
   }
 
   function handleContentChange(e) {
-    changeNoteProperty("content", e);
+    changeNoteProperty("content", e.target.value);
 
     axios
       .patch(`http://localhost:5000/notes/${id}`, {
@@ -90,7 +93,7 @@ function Note({ title, content, color, id }) {
   }
 
   function handleColorChange(e) {
-    changeNoteProperty("color", e);
+    changeNoteProperty("color", e.target.value);
 
     axios
       .patch(`http://localhost:5000/notes/${id}`, {
@@ -104,10 +107,10 @@ function Note({ title, content, color, id }) {
       });
   }
 
-  function changeNoteProperty(propertyName, e) {
+  function changeNoteProperty(propertyName, value) {
     const newNotes = notes.slice();
     const newNote = newNotes.find((note) => note.id === id);
-    newNote[propertyName] = e.target.value;
+    newNote[propertyName] = value;
     setNotes(newNotes);
   }
 
@@ -123,10 +126,13 @@ function Note({ title, content, color, id }) {
         <CardContent className={classes.cardContent}>
           <TextField
             margin="normal"
-            type="text"
             value={title}
             onChange={handleTitleChange}
             variant="outlined"
+            className={classes.titleTextField}
+            InputProps={{
+              className: classes.titleInput,
+            }}
           />
           <TextField
             margin="normal"
