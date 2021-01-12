@@ -11,6 +11,7 @@ import {
   MenuItem,
   TextField,
   Grid,
+  CssBaseline,
 } from "@material-ui/core";
 import { blue, orange, green, yellow, pink } from "@material-ui/core/colors";
 
@@ -121,54 +122,57 @@ function Note({ title, content, color, id }) {
   }
 
   return (
-    <Grid item>
-      <Card className={`${classes.root} ${classes[color.toLowerCase()]}`}>
-        <CardContent className={classes.cardContent}>
-          <TextField
-            margin="normal"
-            value={title}
-            onChange={handleTitleChange}
-            variant="outlined"
-            className={classes.titleTextField}
-            InputProps={{
-              className: classes.titleInput,
-            }}
-          />
-          <TextField
-            margin="normal"
-            multiline={true}
-            rows={10}
-            value={content}
-            onChange={handleContentChange}
-            variant="outlined"
-          />
-          <TextField
-            margin="normal"
-            select
-            fullWidth
-            label="Color"
-            value={color}
-            onChange={handleColorChange}
-            variant="outlined"
-          >
-            {colors.map((option) => (
-              <MenuItem key={option} value={option}>
-                {option}
-              </MenuItem>
-            ))}
-          </TextField>
-        </CardContent>
-        <CardActions>
-          <Button
-            style={{ margin: "0 10px", marginBottom: "1rem" }}
-            variant="contained"
-            onClick={handleDeleteNote}
-          >
-            Delete
-          </Button>
-        </CardActions>
-      </Card>
-    </Grid>
+    <>
+      <CssBaseline />
+      <Grid item xs={4}>
+        <Card className={`${classes.root} ${classes[color.toLowerCase()]}`}>
+          <CardContent className={classes.cardContent}>
+            <TextField
+              margin="normal"
+              value={title}
+              onChange={handleTitleChange}
+              variant="outlined"
+              className={classes.titleTextField}
+              InputProps={{
+                className: classes.titleInput,
+              }}
+            />
+            <TextField
+              margin="normal"
+              multiline={true}
+              rows={10}
+              value={content}
+              onChange={handleContentChange}
+              variant="outlined"
+            />
+            <TextField
+              margin="normal"
+              select
+              fullWidth
+              label="Color"
+              value={color}
+              onChange={handleColorChange}
+              variant="outlined"
+            >
+              {colors.map((option) => (
+                <MenuItem key={option} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
+            </TextField>
+          </CardContent>
+          <CardActions>
+            <Button
+              style={{ margin: "0 10px", marginBottom: "1rem" }}
+              variant="contained"
+              onClick={handleDeleteNote}
+            >
+              Delete
+            </Button>
+          </CardActions>
+        </Card>
+      </Grid>
+    </>
   );
 }
 

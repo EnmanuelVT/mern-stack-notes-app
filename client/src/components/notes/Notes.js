@@ -29,7 +29,7 @@ function Notes() {
   }, [currentUser, setNotes, idToken]);
 
   return (
-    <>
+    <div style={{ overflowX: "hidden" }}>
       <Grid container spacing={2} className={classes.root}>
         {notes.length > 0
           ? notes.map((note) => (
@@ -45,7 +45,7 @@ function Notes() {
           : ""}
       </Grid>
       <AddNoteBtn />
-    </>
+    </div>
   );
 }
 
