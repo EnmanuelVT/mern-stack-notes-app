@@ -4,7 +4,8 @@ import { NotesContext } from "./NotesProvider";
 import axios from "axios";
 import AddNoteBtn from "../addnote/AddNoteBtn";
 import { useAuth } from "../../contexts/AuthContext";
-import { Grid, makeStyles } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
