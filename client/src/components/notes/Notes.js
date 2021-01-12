@@ -29,7 +29,7 @@ function Notes() {
   }, [currentUser, setNotes, idToken]);
 
   return (
-    <div style={{ overflowX: "hidden" }}>
+    <div style={{ overflow: "hidden" }}>
       <Grid container spacing={2} className={classes.root}>
         {notes.length > 0
           ? notes.map((note) => (
