@@ -53,6 +53,9 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
+  const toForgotPassword = () => history.push("/forgot-password");
+  const toSignUp = () => history.push("/sign-up");
+
   const classes = useStyles();
 
   async function handleSubmit(e) {
@@ -119,12 +122,20 @@ function Login() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="/forgot-password" variant="body2">
+              <Link
+                style={{ cursor: "pointer" }}
+                onClick={toForgotPassword}
+                variant="body2"
+              >
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/sign-up" variant="body2">
+              <Link
+                style={{ cursor: "pointer" }}
+                onClick={toSignUp}
+                variant="body2"
+              >
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

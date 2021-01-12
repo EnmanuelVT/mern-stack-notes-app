@@ -54,6 +54,8 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
+  const toLogin = () => history.push("/login");
+
   const classes = useStyles();
 
   async function handleSubmit(e) {
@@ -136,8 +138,12 @@ function SignUp() {
           </Button>
           <Grid container>
             <Grid item>
-              <Link href="/login" variant="body2">
-                {"Already have an account? Log In"}
+              <Link
+                style={{ cursor: "pointer" }}
+                onClick={toLogin}
+                variant="body2"
+              >
+                Already have an account? Log In
               </Link>
             </Grid>
           </Grid>
