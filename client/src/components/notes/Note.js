@@ -122,8 +122,8 @@ function Note({ title, content, color, id }) {
   return (
     <>
       <CssBaseline />
-      <Grid item xs={4}>
-        <Card className={`${classes.root} ${classes[color.toLowerCase()]}`}>
+      <Grid item xs={12} sm={6} lg={4} xl={2}>
+        <Card className={`${classes[color.toLowerCase()]}`}>
           <CardContent className={classes.cardContent}>
             <TextField
               margin="normal"
