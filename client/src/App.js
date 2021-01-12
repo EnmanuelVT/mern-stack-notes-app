@@ -8,7 +8,7 @@ import AuthProvider from "./contexts/AuthContext";
 import Login from "./components/login/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import ForgotPassword from "./components/forgot-password/ForgotPassword";
-import UpdateProfile from "./components/update-profile/UpdateProfile";
+import UpdateAccount from "./components/update-account/UpdateAccount";
 import Account from "./components/account/Account";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
           <Redirect exact from="/" to="/notes" />
           <PrivateRoute path="/notes" component={Notes} />
           <PrivateRoute exact path="/account" component={Account} />
-          <PrivateRoute path="/update-account" component={UpdateProfile} />
+          <PrivateRoute path="/update-account" component={UpdateAccount} />
           <Route path="/sign-up" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />

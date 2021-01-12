@@ -45,7 +45,7 @@ function Copyright() {
   );
 }
 
-function UpdateProfile() {
+function UpdateAccount() {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const confirmPasswordRef = useRef("");
@@ -160,4 +160,4 @@ function UpdateProfile() {
   );
 }
 
-export default UpdateProfile;
+export default UpdateAccount;
