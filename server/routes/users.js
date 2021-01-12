@@ -1,6 +1,7 @@
 const admin = require("../firebase");
 const router = require("express").Router();
 let User = require("../models/user.model");
+let Note = require("../models/note.model");
 
 // router.route("/").get((req, res) => {
 //   User.find()
@@ -23,7 +24,11 @@ router.route("/delete/:uid").delete((req, res) => {
   const { uid } = req.params;
 
   User.findOneAndDelete({ uid: uid })
-    .then(() => res.json("User deleted!"))
+    .then((user) => {
+      Note.deleteMany({ email: user.email })
+        .then(() => res.json("User and notes deleted"))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
     .catch((err) => res.status(400).json("Error " + err));
 });
 
