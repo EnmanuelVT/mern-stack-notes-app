@@ -1,10 +1,3 @@
-http://localhost:5000
-PATCH /notes/5ff36dc9b4b2af3658c570fe
-
-{
-  "username": "pablo",
-  "title": "Otra nota fantastica",
-  "content": "NO LOREM",
-  "id": "5ff36dc9b4b2af3658c570fe"
-}
+http://localhost:5000/users/bm7rmdRpVqR9vK9wj1u0PeqtxTo2
+DELETE 
 
