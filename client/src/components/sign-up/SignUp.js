@@ -69,7 +69,7 @@ function SignUp() {
       setError("");
       setLoading(true);
       await signUp(emailRef.current.value, passwordRef.current.value);
-      history.push("/notes");
+      history.push("/login");
     } catch (err) {
       console.error(err);
       setError("Failed to create an account");

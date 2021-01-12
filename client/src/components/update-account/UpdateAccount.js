@@ -77,7 +77,7 @@ function UpdateAccount() {
 
     Promise.all(promises)
       .then(() => {
-        history.push("/");
+        history.push("/login");
       })
       .catch(() => {
         setError("Failed to update account");
