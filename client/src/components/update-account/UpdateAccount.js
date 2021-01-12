@@ -54,6 +54,8 @@ function UpdateAccount() {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
+  const toAccount = () => history.push("/account");
+
   const classes = useStyles();
 
   function handleSubmit(e) {
@@ -146,7 +148,11 @@ function UpdateAccount() {
           </Button>
           <Grid container>
             <Grid item>
-              <Link href="/account" variant="body2">
+              <Link
+                style={{ cursor: "pointer" }}
+                onClick={toAccount}
+                variant="body2"
+              >
                 Cancel
               </Link>
             </Grid>
