@@ -47,12 +47,11 @@ export default function AuthProvider({ children }) {
   }
 
   function deleteAccount() {
+    const { uid } = currentUser;
+
     currentUser
       .delete()
-      .then(({ user }) => {
-        console.log(user);
-        const { uid } = user;
-
+      .then(() => {
         axios.delete(`http://10.0.0.135:5000/users/delete/${uid}`);
       })
       .catch((err) => console.error(err));

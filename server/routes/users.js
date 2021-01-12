@@ -19,22 +19,12 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/delete/:idToken").delete((req, res) => {
-  const { idToken } = req.params;
+router.route("/delete/:uid").delete((req, res) => {
+  const { uid } = req.params;
 
-  admin
-    .auth()
-    .verifyIdToken(idToken)
-    .then((decodedToken) => {
-      const uid = decodedToken.uid;
-
-      User.findOneAndDelete({ uid: uid })
-        .then(() => res.json("User deleted!"))
-        .catch((err) => res.status(400).json("Error " + err));
-    })
-    .catch((err) => {
-      res.status(400).json("Error: " + err);
-    });
+  User.findOneAndDelete({ uid: uid })
+    .then(() => res.json("User deleted!"))
+    .catch((err) => res.status(400).json("Error " + err));
 });
 
 module.exports = router;

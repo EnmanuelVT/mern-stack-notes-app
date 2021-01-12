@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Account() {
   const [error, setError] = useState("");
-  const { currentUser, logout } = useAuth();
+  const { currentUser, logout, deleteAccount } = useAuth();
   const history = useHistory();
 
   const classes = useStyles();
@@ -47,6 +47,11 @@ function Account() {
     } catch {
       setError("Failed to logout");
     }
+  }
+
+  async function handleDeleteAccount() {
+    deleteAccount();
+    history.push("/login");
   }
 
   const toUpdateAccount = () => history.push("/update-account");
@@ -74,6 +79,16 @@ function Account() {
           onClick={toUpdateAccount}
         >
           Update Account
+        </Button>
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="secondary"
+          className={classes.submit}
+          onClick={handleDeleteAccount}
+        >
+          Delete Account
         </Button>
         <Button
           type="submit"
