@@ -46,18 +46,6 @@ export default function AuthProvider({ children }) {
     currentUser.updatePassword(password);
   }
 
-  function deleteAccount() {
-    currentUser
-      .delete()
-      .then(({ user }) => {
-        console.log(user);
-        const { uid } = user;
-
-        axios.delete(`http://10.0.0.135:5000/users/delete/${uid}`);
-      })
-      .catch((err) => console.error(err));
-  }
-
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       setCurrentUser(user);
@@ -81,7 +69,6 @@ export default function AuthProvider({ children }) {
     resetPassword,
     updateEmail,
     updatePassword,
-    deleteAccount,
     idToken,
   };
 
