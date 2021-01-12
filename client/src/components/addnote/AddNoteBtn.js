@@ -6,11 +6,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.paper,
-    position: "relative",
-    minHeight: "80vh",
-  },
   fab: {
     position: "absolute",
     bottom: theme.spacing(2),
@@ -35,21 +30,15 @@ function AddNoteBtn() {
   }
 
   return (
-    <>
+    <div>
       <CssBaseline />
-      <div className={classes.root}>
-        <Fab
-          color={fab.color}
-          className={fab.className}
-          onClick={handleAddNote}
-        >
-          {fab.icon}
-        </Fab>
-        <Modal open={open} onClose={() => setOpen(false)}>
-          <AddNoteForm onClose={() => setOpen(false)} />
-        </Modal>
-      </div>
-    </>
+      <Fab color={fab.color} className={fab.className} onClick={handleAddNote}>
+        {fab.icon}
+      </Fab>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <AddNoteForm onClose={() => setOpen(false)} />
+      </Modal>
+    </div>
   );
 }
 
