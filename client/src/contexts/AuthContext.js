@@ -27,7 +27,9 @@ export default function AuthProvider({ children }) {
 
         axios.post("http://10.0.0.135:5000/users/add", newUser);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        throw err;
+      });
   }
 
   function login(email, password) {

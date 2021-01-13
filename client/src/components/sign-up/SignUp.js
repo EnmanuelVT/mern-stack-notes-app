@@ -69,10 +69,9 @@ function SignUp() {
       setError("");
       setLoading(true);
       await signUp(emailRef.current.value, passwordRef.current.value);
-      history.push("/login");
     } catch (err) {
       console.error(err);
-      setError("Failed to create an account");
+      setError(err.message);
     }
 
     setLoading(false);
@@ -88,14 +87,15 @@ function SignUp() {
         <Typography component="h1" variant="h5">
           Sign Up
         </Typography>
-        <FormHelperText>{error && error}</FormHelperText>
+        <FormHelperText style={{ color: "red" }}>
+          {error && error}
+        </FormHelperText>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="email"
             label="Email Address"
             name="email"
             autoComplete="email"
@@ -110,7 +110,6 @@ function SignUp() {
             name="password"
             label="Password"
             type="password"
-            id="password"
             autoComplete="current-password"
             inputRef={passwordRef}
           />
@@ -122,7 +121,6 @@ function SignUp() {
             name="password"
             label="Repeat password"
             type="password"
-            id="password"
             autoComplete="current-password"
             inputRef={confirmPasswordRef}
           />
