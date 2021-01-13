@@ -35,7 +35,12 @@ export default function AuthProvider({ children }) {
   }
 
   function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password);
+    return auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => history.push("/notes"))
+      .catch((err) => {
+        throw err;
+      });
   }
 
   function logout() {

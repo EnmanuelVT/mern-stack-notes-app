@@ -65,10 +65,9 @@ function Login() {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/notes");
     } catch (err) {
-      setError("Failed to sign in");
       console.error(err);
+      setError(err.message);
     }
 
     setLoading(false);
@@ -84,7 +83,9 @@ function Login() {
         <Typography component="h1" variant="h5">
           Log In
         </Typography>
-        <FormHelperText>{error && error}</FormHelperText>
+        <FormHelperText style={{ color: "red" }}>
+          {error && error}
+        </FormHelperText>
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
