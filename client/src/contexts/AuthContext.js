@@ -26,6 +26,8 @@ export default function AuthProvider({ children }) {
         };
 
         axios.post("http://10.0.0.135:5000/users/add", newUser);
+
+        history.push("/notes");
       })
       .catch((err) => {
         throw err;
