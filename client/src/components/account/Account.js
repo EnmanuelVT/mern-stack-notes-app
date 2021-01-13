@@ -51,7 +51,6 @@ function Account() {
 
   async function handleDeleteAccount() {
     deleteAccount();
-    history.push("/login");
   }
 
   const toUpdateAccount = () => history.push("/update-account");

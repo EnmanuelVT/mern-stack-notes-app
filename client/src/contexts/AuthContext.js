@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import { auth } from "../firebase";
+import firebase from "firebase/app";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const AuthContext = React.createContext();
 
@@ -8,6 +10,8 @@ export default function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [idToken, setIdToken] = useState();
   const [loading, setLoading] = useState(true);
+
+  const history = useHistory();
 
   function signUp(email, password) {
     return auth
@@ -46,6 +50,18 @@ export default function AuthProvider({ children }) {
     currentUser.updatePassword(password);
   }
 
+  function reauthenticateUser(email, password, isDeletingAccount) {
+    const credential = firebase.auth.EmailAuthProvider.credential(
+      email,
+      password
+    );
+
+    currentUser
+      .reauthenticateWithCredential(credential)
+      .then(() => console.log("Reauthenticated"))
+      .catch((err) => console.error(err));
+  }
+
   function deleteAccount() {
     const { uid } = currentUser;
 
@@ -54,7 +70,13 @@ export default function AuthProvider({ children }) {
       .then(() => {
         axios.delete(`http://10.0.0.135:5000/users/delete/${uid}`);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        if (err.code === "auth/requires-recent-login") {
+          history.push("/reauthenticate");
+        } else {
+          console.error(err.code);
+        }
+      });
   }
 
   useEffect(() => {
@@ -81,6 +103,7 @@ export default function AuthProvider({ children }) {
     updateEmail,
     updatePassword,
     deleteAccount,
+    reauthenticateUser,
     idToken,
   };
 

@@ -10,6 +10,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import ForgotPassword from "./components/forgot-password/ForgotPassword";
 import UpdateAccount from "./components/update-account/UpdateAccount";
 import Account from "./components/account/Account";
+import Reauthentication from "./components/reauthentication/Reauthentication";
 
 function App() {
   return (
@@ -17,10 +18,13 @@ function App() {
       <AuthProvider>
         <NavBar />
         <NotesProvider>
-          <Redirect exact from="/" to="/notes" />
+          <Route exact path="/">
+            <Redirect to="/notes" />
+          </Route>
           <PrivateRoute path="/notes" component={Notes} />
-          <PrivateRoute exact path="/account" component={Account} />
+          <PrivateRoute path="/account" component={Account} />
           <PrivateRoute path="/update-account" component={UpdateAccount} />
+          <PrivateRoute path="/reauthenticate" component={Reauthentication} />
           <Route path="/sign-up" component={SignUp} />
           <Route path="/login" component={Login} />
           <Route path="/forgot-password" component={ForgotPassword} />
