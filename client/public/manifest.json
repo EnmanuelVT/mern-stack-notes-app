@@ -1,1 +1,38 @@
-{}
+{
+  "short_name": "Notes App",
+  "name": "Notes App: Keep your important information save",
+  "description": "A simple web notes app",
+  "icons": [
+    {
+      "src": "/images/note-app-logo192x192.jpg",
+      "type": "image/jpg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/note-app-logo512x512.jpg",
+      "type": "image/jpg",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#3367D6",
+  "shortcuts": [
+    {
+      "name": "See your notes",
+      "short_name": "Notes",
+      "description": "See all your saved notes",
+      "url": "/notes",
+      "icons": []
+    },
+    {
+      "name": "See your account",
+      "short_name": "Account",
+      "description": "See your logged in account",
+      "url": "/account",
+      "icons": []
+    }
+  ]
+}
