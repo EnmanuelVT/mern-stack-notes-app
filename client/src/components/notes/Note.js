@@ -80,7 +80,7 @@ function Note({ title, content, color, id }) {
     changeNoteProperty("content", e.target.value);
 
     axios
-      .patch(`http://localhost:5000/notes/${id}`, {
+      .patch(`http://10.0.0.135:5000/notes/${id}`, {
         content: e.target.value,
       })
       .then((res) => {
